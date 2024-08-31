@@ -78,6 +78,9 @@ add_action('wp_head', function () {
             }
             .js-tabs__content {
                 padding: 25px
+                display: flex;
+                flex-direction: column;
+                row-gap: 30px
             }
         </style>
         <?php echo ob_get_clean();
@@ -182,9 +185,21 @@ add_shortcode("pricing_tabs", function () {
         </ul>
         <?php foreach ($sorted_terms as $package_term) : ?>
             <div class="js-tabs__content">
-                <div class="term_description"><?php echo $package_term->description; ?></div>
+                <div class="term_description">
+                    <div class="term_pricing">
+                        <div>
+                            <strong><?php echo $package_term -> name; ?></strong>
+                        </div>
+                        <div>
+                            <span>$150</span>
+                        </div>
+                    </div>
+                    <div>
+                        <?php echo $package_term->description; ?>
+                    </div>
+                </div>
                 <div class="product-price">
-                     <button style="color: white" class="single_add_to_cart_button">Buy Now</button>
+                     <button style="color: white; width: 100%;" class="single_add_to_cart_button">Buy Now</button>
                 </div>
             </div>
         <?php endforeach;
