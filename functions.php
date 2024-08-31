@@ -42,6 +42,30 @@ add_action('wp_footer', function () {
                 elem: 'tabs',
                 open: 0
             });
+
+            /**
+             * To Change package by js
+             * @param select
+             */
+            function changeSelect(select){
+                Array.from(document.querySelector("#pa_service-type").options).forEach((option, index) => {
+                    option.removeAttribute('selected');
+                    if(select === index){
+                        option.setAttribute('selected', '');
+                    }
+                })
+            }
+
+            document.querySelectorAll('.js-tabs__title').forEach(
+                /**
+                 *
+                 * @param tab {HTMLElement}
+                 */
+                tab => {
+                tab.addEventListener('click', function(){
+                    changeSelect(parseInt(tab.dataset.index))
+                });
+            })
         </script>
         <?php echo ob_get_clean();
     }
