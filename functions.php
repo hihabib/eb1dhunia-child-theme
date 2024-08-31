@@ -63,7 +63,15 @@ add_action('wp_footer', function () {
                  */
                 tab => {
                 tab.addEventListener('click', function(){
-                    changeSelect(parseInt(tab.dataset.index) + 1)
+                    let packageIndex = 0;
+                    if(parseInt(tab.dataset.index) + 1 === 1 ){
+                        packageIndex = 1
+                    } else if(parseInt(tab.dataset.index) + 1 === 2){
+                        packageIndex = 3;
+                    } else if(parseInt(tab.dataset.index) + 1 === 3){
+                        packageIndex = 2;
+                    }
+                    changeSelect(packageIndex)
                 });
             })
         </script>
