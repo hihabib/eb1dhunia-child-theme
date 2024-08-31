@@ -19,49 +19,12 @@ add_action('wp_head', function () {
     if (is_product()) {
         ob_start();
         ?>
-        <style>.js-tabs {
-                margin: 2em;
-                max-width: 100%
-            }
-
-            .js-tabs__header {
-                display: block;
-                margin: 0;
-                padding: 0;
-                overflow: hidden
-            }
-
-            .js-tabs__header li {
-                display: inline-block;
-                float: left
-            }
-
-            .js-tabs__title {
-                background: #f5f5f5;
-                border: 1px solid #ccc;
-                cursor: pointer;
-                display: block;
-                margin-right: .5em;
-                padding: 1em 1.5em;
-                transition: .25s
-            }
-
-            .js-tabs__title:hover {
-                text-decoration: none
-            }
-
-            .js-tabs__title-active {
-                background: #fff;
-                border-bottom-color: #fff;
-                border-top-left-radius: .75em
-            }
-
-            .js-tabs__content {
-                border: 1px solid #ccc;
-                line-height: 1.5;
-                margin-top: -1px;
-                padding: 1em 2em 3em
-            }</style>
+        <style>
+            /**
+             * Vanilla JavaScript Tabs v2.0.1
+             * https://zoltantothcom.github.io/vanilla-js-tabs
+             */
+            .js-tabs{margin:2em;max-width:100%}.js-tabs__header{display:block;margin:0;padding:0;overflow:hidden}.js-tabs__header li{display:inline-block;float:left}.js-tabs__title{background:#f5f5f5;border:1px solid #ccc;cursor:pointer;display:block;margin-right:.5em;padding:1em 1.5em;transition:.25s}.js-tabs__title:hover{text-decoration:none}.js-tabs__title-active{background:#fff;border-bottom-color:#fff;border-top-left-radius:.75em}.js-tabs__content{border:1px solid #ccc;line-height:1.5;margin-top:-1px;padding:1em 2em 3em}</style>
         <?php echo ob_get_clean();
     }
 });
@@ -69,60 +32,13 @@ add_action('wp_head', function () {
 add_action('wp_footer', function () {
     if (is_product()) {
         ob_start(); ?>
-        <script>/**
+        <script>
+            /**
              * Vanilla JavaScript Tabs v2.0.1
              * https://zoltantothcom.github.io/vanilla-js-tabs
              */
-            const Tabs = function (e) {
-                    var t = document.getElementById(e.elem);
-                    if (!t) throw new Error(`Element with ID "${e.elem}" not found`);
-                    const n = t;
-                    let l = e.open || 0;
-                    const r = "js-tabs__title", c = "js-tabs__title-active", o = "js-tabs__content",
-                        a = n.querySelectorAll("." + r).length;
-
-                    function s(e) {
-                        n.addEventListener("click", i);
-                        var t = d(null == e ? l : e);
-                        for (let e = 0; e < a; e++) n.querySelectorAll("." + r)[e].setAttribute("data-index", e.toString()), e === t && f(e)
-                    }
-
-                    function i(e) {
-                        var t = e.target.closest("." + r);
-                        t && (e.preventDefault(), f(parseInt(null != (e = t.getAttribute("data-index")) ? e : "0")))
-                    }
-
-                    function u() {
-                        [].forEach.call(n.querySelectorAll("." + o), e => {
-                            e.style.display = "none"
-                        }), [].forEach.call(n.querySelectorAll("." + r), e => {
-                            e.className = function (e, t) {
-                                t = new RegExp(`(\\s|^)${t}(\\s|$)`, "g");
-                                return e.replace(t, "")
-                            }(e.className, c)
-                        })
-                    }
-
-                    function d(e) {
-                        return e < 0 || isNaN(e) || e >= a ? 0 : e
-                    }
-
-                    function f(e) {
-                        u();
-                        e = d(e);
-                        n.querySelectorAll("." + r)[e].classList.add(c), n.querySelectorAll("." + o)[e].style.display = ""
-                    }
-
-                    function y() {
-                        n.removeEventListener("click", i)
-                    }
-
-                    return s(), {
-                        open: f, update: function (e) {
-                            y(), u(), s(e)
-                        }, destroy: y
-                    }
-                };</script>
+            const Tabs=function(e){var t=document.getElementById(e.elem);if(!t)throw new Error(`Element with ID "${e.elem}" not found`);const n=t;let l=e.open||0;const r="js-tabs__title",c="js-tabs__title-active",o="js-tabs__content",a=n.querySelectorAll("."+r).length;function s(e){n.addEventListener("click",i);var t=d(null==e?l:e);for(let e=0;e<a;e++)n.querySelectorAll("."+r)[e].setAttribute("data-index",e.toString()),e===t&&f(e)}function i(e){var t=e.target.closest("."+r);t&&(e.preventDefault(),f(parseInt(null!=(e=t.getAttribute("data-index"))?e:"0")))}function u(){[].forEach.call(n.querySelectorAll("."+o),e=>{e.style.display="none"}),[].forEach.call(n.querySelectorAll("."+r),e=>{e.className=function(e,t){t=new RegExp(`(\\s|^)${t}(\\s|$)`,"g");return e.replace(t,"")}(e.className,c)})}function d(e){return e<0||isNaN(e)||e>=a?0:e}function f(e){u();e=d(e);n.querySelectorAll("."+r)[e].classList.add(c),n.querySelectorAll("."+o)[e].style.display=""}function y(){n.removeEventListener("click",i)}return s(),{open:f,update:function(e){y(),u(),s(e)},destroy:y}};
+        </script>
         <?php echo ob_get_clean();
     }
 });
