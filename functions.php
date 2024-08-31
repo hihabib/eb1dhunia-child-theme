@@ -63,7 +63,7 @@ add_action('wp_footer', function () {
                  */
                 tab => {
                 tab.addEventListener('click', function(){
-                    changeSelect(parseInt(tab.dataset.index))
+                    changeSelect(parseInt(tab.dataset.index) + 1)
                 });
             })
         </script>
