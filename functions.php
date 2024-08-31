@@ -54,11 +54,11 @@ add_shortcode("pricing_tabs", function () {
     <ul data-tabs>
         <?php
         global $product;
-        $attribute = $product->get_attributes();
-        print_r($attribute);
+        $packages_id = $product->get_attributes()['pa_service-type'] -> options;
+        foreach($packages_id as $package_id):
         ?>
-        <li><a data-tabby-default href="#harry"><?php echo "test"; ?></a></li>
-        <?php ?>
+        <li><a data-tabby-default href="#harry"><?php echo $package_id; ?></a></li>
+        <?php endforeach;?>
     </ul>
 
 
