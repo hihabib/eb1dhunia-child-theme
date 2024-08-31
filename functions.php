@@ -24,7 +24,34 @@ add_action('wp_head', function () {
              * Vanilla JavaScript Tabs v2.0.1
              * https://zoltantothcom.github.io/vanilla-js-tabs
              */
-            .js-tabs{margin:2em;max-width:100%}.js-tabs__header{display:block;margin:0;padding:0;overflow:hidden}.js-tabs__header li{display:inline-block;float:left}.js-tabs__title{background:#f5f5f5;border:1px solid #ccc;cursor:pointer;display:block;margin-right:.5em;padding:1em 1.5em;transition:.25s}.js-tabs__title:hover{text-decoration:none}.js-tabs__title-active{background:#fff;border-bottom-color:#fff;border-top-left-radius:.75em}.js-tabs__content{border:1px solid #ccc;line-height:1.5;margin-top:-1px;padding:1em 2em 3em}</style>
+            .js-tabs {
+                margin: 2em;
+                max-width: 100%;
+            }
+            .js-tabs__header {
+                display: block;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+            .js-tabs__header li {
+                display: inline-block;
+                float: left;
+            }
+            .js-tabs__title {
+            }
+            .js-tabs__title:hover {
+                text-decoration: none;
+            }
+            .js-tabs__title-active {
+            }
+            .js-tabs__content {
+                border: 1px solid #ccc;
+                line-height: 1.5;
+                margin-top: -1px;
+            }
+
+        </style>
         <?php echo ob_get_clean();
     }
 });
