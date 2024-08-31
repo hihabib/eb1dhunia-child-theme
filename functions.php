@@ -70,7 +70,13 @@ add_action('wp_footer', function () {
                     }
                     changeSelect(packageIndex)
                 });
-            })
+            });
+
+            document.querySelectorAll(".js-tabs__content button").forEach(button => {
+                button.addEventListener('click', function(){
+                    document.querySelector('.single_variation_wrap .single_add_to_cart_button').click()
+                });
+            });
         </script>
         <?php echo ob_get_clean();
     }
