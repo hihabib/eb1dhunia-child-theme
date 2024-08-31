@@ -54,15 +54,15 @@ add_shortcode("pricing_tabs", function () {
     <ul data-tabs>
         <?php
         global $product;
-        $attribute = $product->get_attribute('pa_service-type');
+        $attribute = $product->get_attributes();
+        print_r($attribute);
         ?>
-        <li><a data-tabby-default href="#harry"><?php echo $attribute; ?></a></li>
+        <li><a data-tabby-default href="#harry"><?php echo "test"; ?></a></li>
         <?php ?>
     </ul>
 
 
     <div id="harry">
-        <h2>Harry Potter</h2>
 
         <p><strong>Fun Facts:</strong></p>
         <ol>
