@@ -14,8 +14,8 @@ function hello_elementor_child_enqueue_styles()
     );
 
     if (is_product()) {
-        wp_enqueue_style("product_pricing_tab", get_theme_file_uri() . "/styles/tabby-ui.min.css");
-        wp_enqueue_script("product_pricing_tab", get_theme_file_uri() . "/scripts/tabby.polyfills.min.js");
+        wp_enqueue_style("product_pricing_tab", get_template_directory_uri() . "/styles/tabby-ui.min.css");
+        wp_enqueue_script("product_pricing_tab", get_template_directory_uri() . "/scripts/tabby.polyfills.min.js");
     }
 }
 
