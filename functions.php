@@ -54,26 +54,20 @@ add_shortcode("pricing_tabs", function () {
     <ul data-tabs>
         <?php
         global $product;
-        $package_terms= $product->get_attributes()['pa_service-type'] -> get_terms();
-        foreach($package_terms as $package_term) :
+        $package_terms = $product->get_attributes()['pa_service-type']->get_terms();
+        foreach ($package_terms as $index => $package_term) :
 
-        ?>
-        <li><a data-tabby-default href="#harry"><?php echo $package_term -> name; ?>></a></li>
-    <?php endforeach; ?>
+            ?>
+            <li><a <?php echo $index === 0 ? "data-tabby-default" : ""; ?>
+                        href="#<?php echo $package_term -> slug; ?>"><?php echo $package_term->name; ?>></a></li>
+        <?php endforeach; ?>
     </ul>
 
-
-    <div id="harry">
-
-        <p><strong>Fun Facts:</strong></p>
-        <ol>
-            <li>"The boy who lived"</li>
-            <li>Best friends with Ron and Hermione</li>
-            <li>Fails up on a regular basis</li>
-        </ol>
-        <p><a href="https://en.wikipedia.org/wiki/Harry_Potter_(character)">More about Harry &rarr;</a></p>
+    <?php foreach ($package_terms as $package_term) : ?>
+    <div id="<?php echo $package_term -> slug ?>">
+        <?php echo $package_term -> description; ?>
     </div>
-
+    <?php endforeach; ?>
     <?php
     return ob_get_clean();
 });
