@@ -55,7 +55,7 @@ add_action('wp_footer', function () {
                     }
                 })
             }
-
+            changeSelect(1);
             document.querySelectorAll('.js-tabs__title').forEach(
                 /**
                  *
