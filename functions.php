@@ -121,9 +121,9 @@ add_shortcode("pricing_tabs", function () {
         </ul>
         <?php foreach ($sorted_terms as $package_term) : ?>
             <div class="js-tabs__content">
-                <?php echo $package_term->description; ?>
+                <div class="term_description"><?php echo $package_term->description; ?></div>
                 <div class="product-price">
-                     <button class="single_add_to_cart_button">Buy Now</button>
+                     <button style="color: white" class="single_add_to_cart_button">Buy Now</button>
                 </div>
             </div>
         <?php endforeach;
