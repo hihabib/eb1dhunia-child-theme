@@ -135,7 +135,9 @@ add_action('wp_footer', function () {
                     } else if(parseInt(tab.dataset.index) + 1 === 3){
                         packageIndex = 2;
                     }
-                    changeSelect(packageIndex)
+                    changeSelect(packageIndex);
+                    const price = document.querySelector(".woocommerce-Price-amount.amount").textContent;
+                    document.querySelector(".term_pricing > div:last-child").innerText = price;
                 });
             });
 
