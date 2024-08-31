@@ -54,7 +54,7 @@ add_shortcode("pricing_tabs", function () {
     <ul data-tabs>
         <?php
         global $product;
-        $packages_id = $product->get_attributes()['pa_service-type'] -> data;
+        $packages_id = $product->get_attributes()['pa_service-type'];
         var_dump($packages_id);
 
         ?>
