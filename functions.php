@@ -48,12 +48,9 @@ add_action('wp_footer', function () {
              * @param select
              */
             function changeSelect(select){
-                Array.from(document.querySelector("#pa_service-type").options).forEach((option, index) => {
-                    option.removeAttribute('selected');
-                    if(select === index){
-                        option.setAttribute('selected', '');
-                    }
-                })
+                const value = document.querySelector("#pa_service-type").options[select].value;
+                jQuery('#pa_service-type').val(value);
+                jQuery('#pa_service-type').change();
             }
             changeSelect(1);
             document.querySelectorAll('.js-tabs__title').forEach(
