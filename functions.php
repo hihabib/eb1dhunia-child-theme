@@ -12,12 +12,18 @@ function hello_elementor_child_enqueue_styles()
         get_stylesheet_directory_uri() . '/style.css',
         array('parent-style')
     );
-
-    if (is_product()) {
-        wp_enqueue_style("product_pricing_tab", get_stylesheet_directory_uri() . "/styles/tabby-ui.min.css");
-        wp_enqueue_script("product_pricing_tab", get_stylesheet_directory_uri() . "/scripts/tabby.polyfills.min.js");
-    }
 }
+
+// add internal css and js
+add_action('wp_head', function (){
+    if(is_product()){
+        ob_start();
+        ?>
+        <style>/*! tabbyjs v12.0.3 | (c) 2019 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/tabby */
+            [role=tablist]{border-bottom:1px solid #d3d3d3;list-style:none;margin:0;padding:0}[role=tablist] *{box-sizing:border-box}@media (min-width:30em){[role=tablist] li{display:inline-block}}[role=tab]{border:1px solid transparent;border-top-color:#d3d3d3;display:block;padding:.5em 1em;text-decoration:none}@media (min-width:30em){[role=tab]{border-top-color:transparent;border-top-left-radius:.5em;border-top-right-radius:.5em;display:inline-block;margin-bottom:-1px}}[role=tab][aria-selected=true]{background-color:#d3d3d3}@media (min-width:30em){[role=tab][aria-selected=true]{background-color:transparent;border:1px solid #d3d3d3;border-bottom-color:#fff}}[role=tab]:hover:not([aria-selected=true]){background-color:#f7f7f7}@media (min-width:30em){[role=tab]:hover:not([aria-selected=true]){border:1px solid #d3d3d3}}[hidden]{display:none}</style>
+        <?php return ob_get_clean();
+    }
+});
 
 // Change Add to Cart button text on the single product page
 add_filter('woocommerce_product_single_add_to_cart_text', 'custom_single_add_to_cart_text');
