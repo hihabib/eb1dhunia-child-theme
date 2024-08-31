@@ -136,8 +136,10 @@ add_action('wp_footer', function () {
                         packageIndex = 2;
                     }
                     changeSelect(packageIndex);
-                    const price = document.querySelector(".woocommerce-Price-amount.amount").textContent;
-                    document.querySelector(".term_pricing > div:last-child").innerText = price;
+                    document.querySelectorAll(".term_pricing").forEach(el => {
+                        el.querySelector("div:last-child").innerText = document.querySelector(".woocommerce-Price-amount.amount").textContent;
+                    })
+
                 });
             });
 
