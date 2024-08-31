@@ -77,10 +77,19 @@ add_action('wp_head', function () {
                 color: white!important;
             }
             .js-tabs__content {
-                padding: 25px
+                padding: 25px;
                 display: flex;
                 flex-direction: column;
                 row-gap: 30px
+            }
+            .term_pricing {
+                display: flex;
+                justify-content: space-between;
+            }
+            .term_description {
+                display: flex;
+                flex-direction: column;
+                row-gap: 20px;
             }
         </style>
         <?php echo ob_get_clean();
