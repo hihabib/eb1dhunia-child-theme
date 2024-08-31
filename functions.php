@@ -46,11 +46,39 @@ add_action('wp_head', function () {
             .js-tabs__title-active {
             }
             .js-tabs__content {
-                border: 1px solid #ccc;
                 line-height: 1.5;
                 margin-top: -1px;
             }
-
+            #tabs {
+                background: white;
+                border: 1px solid rgb(226, 49, 37);
+            }
+            .js-tabs__header {
+                border-bottom: 1px solid rgb(226, 49, 37);
+                display: flex;
+                justify-content: space-between;
+            }
+            .js-tabs__header li {
+                display: flex;
+                width: 100%;
+                border-right: 1px solid rgb(226, 49, 37);
+            }
+            .js-tabs__header li:last-child{
+                border-right: 0;
+            }
+            .js-tabs__title {
+                padding: 20px 0;
+                text-align: center;
+                width: 100%;
+                color: rgb(226, 49, 37);
+            }
+            .js-tabs__title-active {
+                background: #EF908C;
+                color: white!important;
+            }
+            .js-tabs__content {
+                padding: 25px
+            }
         </style>
         <?php echo ob_get_clean();
     }
