@@ -267,7 +267,7 @@ add_shortcode("pricing_tabs", function () {
     <div class="js-tabs" id="tabs">
         <ul class="js-tabs__header">
             <?php
-            global $product;
+            $product = wc_get_product(get_the_ID());
             $unsorted_terms = $product->get_attributes()['pa_service-type']->get_terms();
             $sorted_terms = [$unsorted_terms[0], $unsorted_terms[2], $unsorted_terms[1]];
             foreach ($sorted_terms as $package_term) :
