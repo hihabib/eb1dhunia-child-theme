@@ -187,7 +187,9 @@ add_action('wp_footer', function () {
                 try{
                     setCurrentPrice();
                 } catch(err){
-                    tryChangeSelect();
+                    setTimeout(() => {
+                        tryChangeSelect();
+                    }, 500)
                 }
             }
 
@@ -281,7 +283,7 @@ add_shortcode("pricing_tabs", function () {
                             <strong><?php echo $package_term->name; ?></strong>
                         </div>
                         <div>
-                            <span>$150</span>
+                            <span>Loading</span>
                         </div>
                     </div>
                     <div>
