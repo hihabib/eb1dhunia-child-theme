@@ -268,11 +268,12 @@ add_shortcode("pricing_tabs", function () {
         <ul class="js-tabs__header">
             <?php
             $product = wc_get_product(get_the_ID());
-            $unsorted_terms = $product->get_attributes()['pa_service-type']->get_terms();
+            if($product instanceof WC_Product){
+                $unsorted_terms = $product->get_attributes()['pa_service-type']->get_terms();
             $sorted_terms = [$unsorted_terms[0], $unsorted_terms[2], $unsorted_terms[1]];
             foreach ($sorted_terms as $package_term) :
                 ?>
-                <li><a class="js-tabs__title" href="#"><?php echo $package_term->name; ?></a></li>
+            <li><a class="js-tabs__title" href="#"><?php echo $package_term->name; ?></a></li>
             <?php endforeach; ?>
         </ul>
         <?php foreach ($sorted_terms as $package_term) : ?>
@@ -298,6 +299,8 @@ add_shortcode("pricing_tabs", function () {
         unset($unsorted_terms);
         unset($sorted_terms);
         unset($package_term);
+            }
+
         ?>
     </div>
 
