@@ -51,16 +51,15 @@ add_shortcode("pricing_tabs", function () {
         <ul class="js-tabs__header">
             <?php
             $product = wc_get_product(get_the_ID());
-            if($product instanceof WC_Product){
-                $unsorted_terms = $product->get_attributes()['pa_service-type']->get_terms();
-            $sorted_terms = [$unsorted_terms[0], $unsorted_terms[2], $unsorted_terms[1]];
-            $packages = ['Basic', 'Standard', 'Premium'];
-            foreach ($sorted_terms as $index => $package_term) :
+            if ($product instanceof WC_Product){
+            $terms = $product->get_attributes()['pa_service-type']->get_terms();
+            foreach ($terms as $package_term) :
+                $package_name = trim(explode("-", $package_term -> name)[0]);
                 ?>
-            <li><a class="js-tabs__title" href="#"><?php echo $packages[$index]; ?></a></li>
+                <li><a class="js-tabs__title" href="#"><?php echo $package_name; ?></a></li>
             <?php endforeach; ?>
         </ul>
-        <?php foreach ($sorted_terms as $package_term) : ?>
+        <?php foreach ($terms as $package_term) : ?>
             <div class="js-tabs__content">
                 <div class="term_description">
                     <div class="term_pricing">
@@ -80,10 +79,9 @@ add_shortcode("pricing_tabs", function () {
                 </div>
             </div>
         <?php endforeach;
-        unset($unsorted_terms);
-        unset($sorted_terms);
+        unset($terms);
         unset($package_term);
-            }
+        }
 
         ?>
     </div>
