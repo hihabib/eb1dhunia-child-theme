@@ -54,9 +54,10 @@ add_shortcode("pricing_tabs", function () {
             if($product instanceof WC_Product){
                 $unsorted_terms = $product->get_attributes()['pa_service-type']->get_terms();
             $sorted_terms = [$unsorted_terms[0], $unsorted_terms[2], $unsorted_terms[1]];
-            foreach ($sorted_terms as $package_term) :
+            $packages = ['Basic', 'Standard', 'Premium'];
+            foreach ($sorted_terms as $index => $package_term) :
                 ?>
-            <li><a class="js-tabs__title" href="#"><?php echo $package_term->name; ?></a></li>
+            <li><a class="js-tabs__title" href="#"><?php echo $packages[$index]; ?></a></li>
             <?php endforeach; ?>
         </ul>
         <?php foreach ($sorted_terms as $package_term) : ?>
