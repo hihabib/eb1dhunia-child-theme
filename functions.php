@@ -183,6 +183,13 @@ add_action('wp_footer', function () {
                 jQuery('#pa_service-type').val(value);
                 jQuery('#pa_service-type').change();
             }
+            function tryChangeSelect(){
+                try{
+                    setCurrentPrice();
+                } catch(err){
+                    tryChangeSelect();
+                }
+            }
 
             function setCurrentPrice() {
                 document.querySelectorAll(".term_pricing").forEach(el => {
@@ -191,7 +198,7 @@ add_action('wp_footer', function () {
             }
 
             changeSelect(1);
-            setCurrentPrice();
+            tryChangeSelect();
             document.querySelectorAll('.js-tabs__title').forEach(
                 /**
                  *
