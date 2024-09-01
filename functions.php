@@ -53,11 +53,7 @@ add_shortcode("pricing_tabs", function () {
             $product = wc_get_product(get_the_ID());
             if ($product instanceof WC_Product){
             $unsorted_terms = $product->get_attributes()['pa_service-type']->get_terms();
-            if(count($unsorted_terms) === 3){
-                $terms = [$unsorted_terms[0], $unsorted_terms[2], $unsorted_terms[1]];
-            } else {
-                $terms = $unsorted_terms;
-            }
+            $terms = $unsorted_terms;
 
             foreach ($terms as $package_term) :
                 $package_name = trim(explode("-", $package_term -> name)[0]);
